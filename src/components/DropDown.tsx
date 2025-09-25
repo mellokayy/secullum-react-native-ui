@@ -168,6 +168,7 @@ export interface DropDownProperties {
   icon?: string | undefined;
   arrowColor?: string | undefined;
   searchable?: SearchableProps;
+  animation?: 'none' | 'fade' | 'slide';
 }
 
 export interface SearchableProps {
@@ -447,7 +448,8 @@ export class DropDown extends React.Component<
       nativeID,
       onPress,
       icon,
-      searchable
+      searchable,
+      animation
     } = this.props;
 
     const selectedItem = items.find(x => x.value === value);
@@ -493,6 +495,7 @@ export class DropDown extends React.Component<
             visible={modalOpen}
             onRequestClose={() => this.setState({ modalOpen: false })}
             overlayStyle={styles.modalOverlay}
+            animation={animation ?? 'fade'}
           >
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
               <View
