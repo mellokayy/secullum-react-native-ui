@@ -616,7 +616,7 @@ export class DropDown extends React.Component<
             onRequestClose={() => this.setState({ modalOpen: false })}
             overlayStyle={styles.modalOverlay}
           >
-              {/*
+            {/*
                 Usamos o KeyboardAvoidingView para evitar que o modal fique atrás do teclado 
                 no projeto equipamento-virtual, pois como o app usa StatusBar oculta (modo fullscreen), o 
                 ajuste automático via adjustResize não funciona corretamente.
