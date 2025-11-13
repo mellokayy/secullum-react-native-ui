@@ -180,6 +180,7 @@ export interface DropDownProperties {
   searchable?: SearchableProps;
   virtualized?: true | VirtualizedProps;
   useKeyboardAvoidingView?: boolean;
+  animation?: 'none' | 'fade' | 'slide';
 }
 
 export interface SearchableProps {
@@ -519,7 +520,8 @@ export class DropDown extends React.Component<
       onPress,
       icon,
       searchable,
-      useKeyboardAvoidingView
+      useKeyboardAvoidingView,
+      animation
     } = this.props;
 
     const selectedItem = items.find(x => x.value === value);
@@ -615,6 +617,7 @@ export class DropDown extends React.Component<
             visible={modalOpen}
             onRequestClose={() => this.setState({ modalOpen: false })}
             overlayStyle={styles.modalOverlay}
+            animation={animation ?? 'fade'}
           >
             {/*
                 Usamos o KeyboardAvoidingView para evitar que o modal fique atrás do teclado 

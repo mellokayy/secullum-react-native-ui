@@ -15,6 +15,7 @@ export interface ModalProperties {
   visible: boolean;
   overlayStyle?: StyleProp<ViewStyle>;
   onRequestClose?: () => void;
+  animation?: 'none' | 'fade' | 'slide';
 }
 
 interface ModalState {
@@ -37,12 +38,18 @@ export class Modal extends React.Component<ModalProperties> {
   };
 
   render() {
-    const { children, visible, overlayStyle, onRequestClose } = this.props;
+    const {
+      children,
+      visible,
+      overlayStyle,
+      onRequestClose,
+      animation
+    } = this.props;
     const { isMounted } = this.state;
 
     return (
       <ReactNativeModal
-        animationType="fade"
+        animationType={animation ?? 'fade'}
         transparent
         visible={visible}
         supportedOrientations={['landscape', 'portrait']}
